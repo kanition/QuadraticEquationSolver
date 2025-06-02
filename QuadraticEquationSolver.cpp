@@ -256,9 +256,7 @@ void QuadtraticEquationSolver::solve_complete()
         double delta = kahan_discriminant(a2, b2, cp);
         if (delta < 0)
         {
-            x1 = std::nan("");
-            x2 = std::nan("");
-            state = NO_ROOT;
+            no_root();
             return;
         }
         if (delta > 0)
@@ -271,9 +269,7 @@ void QuadtraticEquationSolver::solve_complete()
             state = TWO_REAL;
             return;
         }
-        x1 = ((-b2 / (2 * a2)) * std::pow(2, k2)) * std::pow(2, k1);
-        x2 = std::nan("");
-        state = ONE_REAL;
+        one_real(((-b2 / (2 * a2)) * std::pow(2, k2)) * std::pow(2, k1));
         return;
     }
     int dm = ecp & (~1);
@@ -295,9 +291,7 @@ void QuadtraticEquationSolver::solve_complete()
     // ecp > e_max
     if (sign(a) == sign(c))
     {
-        x1 = std::nan("");
-        x2 = std::nan("");
-        state = NO_ROOT; // or complex root
+        no_root(); // or complex root
         return;
     }
     keep_exponent(m + k, dm1, dm2);

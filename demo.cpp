@@ -6,16 +6,22 @@
 #define RED "\033[31m"
 #define GREEN "\033[32m"
 
+static bool is_invalid_root(const double x)
+{
+    return std::isnan(x) || std::isinf(x);
+}
+
 void naive_solver(const double a, const double b, const double c, SolverState &t, double &x1, double &x2)
 {
     constexpr double inf = std::numeric_limits<double>::infinity();
     const double nan = std::nan("");
+    double delta = (b * b - 4 * a * c);
     if (std::isnan(a) || std::isnan(b) || std::isnan(c) || std::isinf(a) || std::isinf(b) || std::isinf(c))
     {
         x1 = nan;
         x2 = nan;
         t = INVALID_INPUT;
-        return;
+        goto CHECK_OVERUNDERFLOW;
     }
     if (a == 0)
     {
@@ -26,14 +32,14 @@ void naive_solver(const double a, const double b, const double c, SolverState &t
                 x1 = inf;
                 x2 = -inf;
                 t = ALL_REAL;
-                return;
+                goto CHECK_OVERUNDERFLOW;
             }
             else
             {
                 x1 = nan;
                 x2 = nan;
                 t = NO_ROOT;
-                return;
+                goto CHECK_OVERUNDERFLOW;
             }
         }
         else
@@ -41,27 +47,31 @@ void naive_solver(const double a, const double b, const double c, SolverState &t
             x1 = -c / b;
             x2 = nan;
             t = ONE_REAL;
-            return;
+            goto CHECK_OVERUNDERFLOW;
         }
     }
-    double delta = (b * b - 4 * a * c);
     if (delta < 0)
     {
         x1 = nan;
         x2 = nan;
         t = NO_ROOT;
-        return;
+        goto CHECK_OVERUNDERFLOW;
     }
     if (delta == 0)
     {
         x1 = -b / (2 * a);
         x2 = nan;
         t = ONE_REAL;
-        return;
+        goto CHECK_OVERUNDERFLOW;
     }
     x1 = (-b - std::sqrt(delta)) / (2 * a);
     x2 = (-b + std::sqrt(delta)) / (2 * a);
     t = TWO_REAL;
+CHECK_OVERUNDERFLOW:
+    if (((TWO_REAL == t) && (is_invalid_root(x1) || is_invalid_root(x2))) || (ONE_REAL == t && is_invalid_root(x1)))
+    {
+        t = OVER_UNDER_FLOW;
+    }
 }
 
 static void print_iterm(const double m, const char *const iterm, bool &have_last)
