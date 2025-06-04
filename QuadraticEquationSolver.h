@@ -1,4 +1,7 @@
-#pragma once
+﻿#pragma once
+
+#ifndef _QUADRATIC_EQUATION_SOLVER_
+#define _QUADRATIC_EQUATION_SOLVER_
 
 #include <limits>
 #include <cmath>
@@ -18,16 +21,16 @@ enum SolverState
     OVER_UNDER_FLOW
 };
 
-const std::string print_solver_state(SolverState s);
-
 template <typename T>
 class QuadtraticEquationSolver
 {
 public:
     QuadtraticEquationSolver(const T a, const T b, const T c);
     ~QuadtraticEquationSolver();
-    void solve(SolverState &s, T &r1, T &r2);
+    SolverState solve(T &r1, T &r2);
     void reset(const T a, const T b, const T c);
+    static const std::string print_solver_state(SolverState s);
+    const std::string print_solver_state();
 
 private:
     T a;
@@ -378,16 +381,16 @@ void QuadtraticEquationSolver<T>::solve()
 }
 
 template <typename T>
-void QuadtraticEquationSolver<T>::solve(SolverState &s, T &r1, T &r2)
+SolverState QuadtraticEquationSolver<T>::solve(T &r1, T &r2)
 {
     solve();
     if (((TWO_REAL == state) && (is_invalid_input(x1) || is_invalid_input(x2))) || (ONE_REAL == state && is_invalid_input(x1)))
     {
         state = OVER_UNDER_FLOW;
     }
-    s = state;
     r1 = x1;
     r2 = x2;
+    return state;
 }
 
 template <typename T>
@@ -401,5 +404,36 @@ void QuadtraticEquationSolver<T>::reset(const T a, const T b, const T c)
     x2 = 0;
 }
 
+template <typename T>
+const std::string QuadtraticEquationSolver<T>::print_solver_state(SolverState s)
+{
+#define CASE_SOLVER_STATE(x) \
+    case x:                  \
+        return #x;           \
+        break
+    switch (s)
+    {
+        CASE_SOLVER_STATE(UNCERTAIN);
+        CASE_SOLVER_STATE(INVALID_INPUT);
+        CASE_SOLVER_STATE(ALL_REAL);
+        CASE_SOLVER_STATE(NO_ROOT);
+        CASE_SOLVER_STATE(ONE_REAL);
+        CASE_SOLVER_STATE(TWO_REAL);
+        CASE_SOLVER_STATE(OVER_UNDER_FLOW);
+    default:
+        break;
+    }
+    return "UNKNOWN_ERROR";
+#undef CASE_SOLVER_STATE
+}
+
+template <typename T>
+const std::string QuadtraticEquationSolver<T>::print_solver_state()
+{
+    return QuadtraticEquationSolver<T>::print_solver_state(this->state);
+}
+
 #undef sign
 #undef is_invalid_input
+
+#endif
