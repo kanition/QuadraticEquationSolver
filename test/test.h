@@ -178,7 +178,8 @@ void demo(const char *tips, const T a, const T b, const T c)
     const auto color = is_same ? GREEN : RED;
     constexpr size_t precs = std::is_same_v<T, double> ? 15 : 7;
     const std::string data_type = std::is_same_v<T, double> ? "double" : "float";
-    std::cout << tips << std::endl;
+    static size_t ind = 1;
+    std::cout << "(" << ind++ << ") " << tips << std::endl;
     print_info(a, b, c);
     const std::string info1 = QuadtraticEquationSolver<T>::print_solver_state(s);
     const std::string info2 = QuadtraticEquationSolver<T>::print_solver_state(t);
