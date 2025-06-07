@@ -119,12 +119,12 @@ void print_info(const T a, const T b, const T c)
     std::cout << "Solving: ";
     print_iterm(a, " * x^2", have_last);
     print_iterm(b, " * x", have_last);
-    print_iterm(c, " ", have_last);
+    print_iterm(c, "", have_last);
     if (!have_last)
     {
         std::cout << "0";
     }
-    std::cout << "= 0" << std::endl;
+    std::cout << " = 0" << std::endl;
 }
 
 template <typename T>

@@ -1,4 +1,4 @@
-# Robustness & Precision
+﻿# Robustness & Precision
 
 ## Background
 To solve the following quadratic equation with program
@@ -33,11 +33,11 @@ x_2 = 1.
 ```
 Everything is fine!
 ## Everything is fine …… really?
-Let's solving another equation which is very similar:
+Let's solve another equation which is very similar:
 ```math
 10^{-300}x^2+4\cdot 10^{-300}x-5\cdot 10^{-300}=0.
 ```
-As intelligent as you are, you immediately recognize that it has **exactly the same** roots as the previous equation, because it can be re-write as
+As intelligent as you are, you immediately recognize that it has **exactly the same** roots as the previous equation, because it can be re-written as
 ```math
 10^{-300}(x^2+4x-5)=0.
 ```
@@ -63,22 +63,22 @@ x_2 = inf
 Arithmetic *underflow* and *overflows* may occur.
 [*Catastrophic cancellation*](https://en.wikipedia.org/wiki/Catastrophic_cancellation) also disrupts your computation.
 All these make the results wrong.
-Solving such a equation is not as simple as you think.
+Solving such an equation is not as simple as you think.
 
-## That's what our solver try to solve!
+## That's what our solver tries to solve!
 We put the *naive* solver in [test.h](./test/test.h) for comparison.
 
 For each format (single or double-precision),
 41 cases are listed in [float_test.cpp](./test/float_test.cpp) and [double_test.cpp](./test/double_test.cpp) respectively.
 
 Here are the results for `double_test`.
-You can find that our solver has much better robustness and recision.
+You can find that our solver has much better robustness and precision.
 ```
 Double min: 2.22507e-308
 Double max: 1.79769e+308
 ===================================================================
 (1) a = b = c = 0
-Solving: 0= 0
+Solving: 0 = 0
 +-------+----------------------------+----------------------------+
 |double |  QuadtraticEquationSolver  |        Naive Solver        |
 +-------+----------------------------+----------------------------+
@@ -122,7 +122,7 @@ Solving: 1.79769e+308 = 0
 +-------+----------------------------+----------------------------+
 
 (5) b != 0
-Solving: 2 * x= 0
+Solving: 2 * x = 0
 +-------+----------------------------+----------------------------+
 |double |  QuadtraticEquationSolver  |        Naive Solver        |
 +-------+----------------------------+----------------------------+
@@ -133,7 +133,7 @@ Solving: 2 * x= 0
 +-------+----------------------------+----------------------------+
 
 (6) |b| ≈ 0
-Solving: 2.22507e-308 * x= 0
+Solving: 2.22507e-308 * x = 0
 +-------+----------------------------+----------------------------+
 |double |  QuadtraticEquationSolver  |        Naive Solver        |
 +-------+----------------------------+----------------------------+
@@ -144,7 +144,7 @@ Solving: 2.22507e-308 * x= 0
 +-------+----------------------------+----------------------------+
 
 (7) |b| >> 0
-Solving: 1.79769e+308 * x= 0
+Solving: 1.79769e+308 * x = 0
 +-------+----------------------------+----------------------------+
 |double |  QuadtraticEquationSolver  |        Naive Solver        |
 +-------+----------------------------+----------------------------+
@@ -232,7 +232,7 @@ Solving: 1.79769e+308 * x + 2.22507e-308 = 0
 +-------+----------------------------+----------------------------+
 
 (15) ax^2 = 0
-Solving: 5 * x^2= 0
+Solving: 5 * x^2 = 0
 +-------+----------------------------+----------------------------+
 |double |  QuadtraticEquationSolver  |        Naive Solver        |
 +-------+----------------------------+----------------------------+
@@ -353,7 +353,7 @@ Solving: 1e+308 * x^2 - 2.89e-308 = 0
 +-------+----------------------------+----------------------------+
 
 (26) ax^2 + bx = 0, exist x = 0
-Solving: 4 * x^2 + 8 * x= 0
+Solving: 4 * x^2 + 8 * x = 0
 +-------+----------------------------+----------------------------+
 |double |  QuadtraticEquationSolver  |        Naive Solver        |
 +-------+----------------------------+----------------------------+
@@ -364,7 +364,7 @@ Solving: 4 * x^2 + 8 * x= 0
 +-------+----------------------------+----------------------------+
 
 (27) ax^2 + bx = 0, exist x = 0
-Solving: 4 * x^2 - 8 * x= 0
+Solving: 4 * x^2 - 8 * x = 0
 +-------+----------------------------+----------------------------+
 |double |  QuadtraticEquationSolver  |        Naive Solver        |
 +-------+----------------------------+----------------------------+
@@ -375,7 +375,7 @@ Solving: 4 * x^2 - 8 * x= 0
 +-------+----------------------------+----------------------------+
 
 (28) ax^2 + bx = 0, exist x = 0, avoid overflow
-Solving: 4e+307 * x^2 - 8e+307 * x= 0
+Solving: 4e+307 * x^2 - 8e+307 * x = 0
 +-------+----------------------------+----------------------------+
 |double |  QuadtraticEquationSolver  |        Naive Solver        |
 +-------+----------------------------+----------------------------+
@@ -386,7 +386,7 @@ Solving: 4e+307 * x^2 - 8e+307 * x= 0
 +-------+----------------------------+----------------------------+
 
 (29) ax^2 + bx = 0, exist x = 0, avoid underflow
-Solving: 4e-308 * x^2 - 8e-308 * x= 0
+Solving: 4e-308 * x^2 - 8e-308 * x = 0
 +-------+----------------------------+----------------------------+
 |double |  QuadtraticEquationSolver  |        Naive Solver        |
 +-------+----------------------------+----------------------------+
