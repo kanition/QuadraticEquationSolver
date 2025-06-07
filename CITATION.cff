@@ -1,0 +1,27 @@
+# This CITATION.cff file was generated with cffinit.
+# Visit https://bit.ly/cffinit to generate yours today!
+
+cff-version: 1.2.0
+title: Robust High-Precision Quadratic Equation Solver
+message: >-
+  If you use this software, please cite it using the
+  metadata from this file.
+type: software
+authors:
+  - family-names: Kanition
+repository-code: 'https://github.com/kanition/QuadraticEquationSolver'
+abstract: >-
+  A robust high-precision quadratic equation solver in C++20
+  in the floating-point format, under IEEE Standard for
+  Floating-Point Arithmetic (IEEE 754). Both
+  single-precision (32-bits) and double-precision (64-bits)
+  are supported.
+keywords:
+  - quadratic equation
+  - floating-point
+  - numerical calculation
+  - catastrophic cancellation
+  - overflow
+  - underflow
+license: Apache-2.0
+date-released: '2025-06-06'

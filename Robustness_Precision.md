@@ -60,7 +60,7 @@ x_2 = inf
 ```
 ## What happened!?
 [*Floating-Point*](https://en.wikipedia.org/wiki/Floating-point_arithmetic) format has **limited** precision.
-Arithmetic *underflow* and *overflows* may occur.
+Arithmetic *underflow* and *overflow* may occur.
 [*Catastrophic cancellation*](https://en.wikipedia.org/wiki/Catastrophic_cancellation) also disrupts your computation.
 All these make the results wrong.
 Solving such an equation is not as simple as you think.

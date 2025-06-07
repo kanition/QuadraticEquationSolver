@@ -1,4 +1,10 @@
-# Robust High-Precision Quadratic Equation Solver
+<!-- # Robust High-Precision Quadratic Equation Solver -->
+![https://github.com/kanition/QuadraticEquationSolver](.github/banner.png)
+
+![C++](https://img.shields.io/badge/C++-Solutions-blue.svg?logo=c%2B%2B)
+[![GitHub License](https://img.shields.io/github/license/kanition/QuadraticEquationSolver)](LICENSE)
+![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/kanition/QuadraticEquationSolver/.github%2Fworkflows%2Fcmake-multi-platform.yml)
+[![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-2.1-5E0D73.svg?logo=contributorcovenant&logoColor=fff)](CODE_OF_CONDUCT.md)
 
 A *Robust High-Precision* [Quadratic Equation](https://en.wikipedia.org/wiki/Quadratic_equation) Solver in C++20 for
 ```math
@@ -75,26 +81,13 @@ make test
 See [here](./Robustness_Precision.md) for more detailed discussion and surprising cases.
 
 ## Acknowledgement
-Thank the author for developing and sharing this algorithm in the following paper.
+### About Algorithm
+Thank the author for developing and sharing this algorithm in the following [paper](https://cnrs.hal.science/hal-04116310v1).
 ```
 Frédéric Goualard. The Ins and Outs of Solving Quadratic Equations with Floating-Point Arithmetic. 2023. ⟨hal-04116310⟩
 ```
-### Citation
-```bibtex
-@unpublished{goualard:hal-04116310,
-  TITLE = {{The Ins and Outs of Solving Quadratic Equations with Floating-Point Arithmetic}},
-  AUTHOR = {Goualard, Fr{\'e}d{\'e}ric},
-  URL = {https://cnrs.hal.science/hal-04116310},
-  NOTE = {working paper or preprint},
-  YEAR = {2023},
-  MONTH = Jun,
-  KEYWORDS = {Floating-point arithmetic ; numerical errors ; robustness ; quadratic equation},
-  PDF = {https://cnrs.hal.science/hal-04116310v1/file/quadratics.pdf},
-  HAL_ID = {hal-04116310},
-  HAL_VERSION = {v1},
-}
-```
-
+### About Banner
+Based on works by [wepik@Freepik](https://www.freepik.com/author/wepik)
 ## LICENSE
 
 Copyright 2025 Kanition
