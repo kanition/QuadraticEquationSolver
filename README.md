@@ -1,6 +1,6 @@
 # Robust High-Precision Quadratic Equation Solver
 
-A *Robust High-Precision* Quadratic Equation Solver in C++20 for
+A *Robust High-Precision* [Quadratic Equation](https://en.wikipedia.org/wiki/Quadratic_equation) Solver in C++20 for
 ```math
 ax^2+bx+c=0,
 ```
