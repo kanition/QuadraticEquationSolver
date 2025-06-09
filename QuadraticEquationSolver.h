@@ -39,17 +39,17 @@ private:
     T x1;
     T x2;
     SolverState state;
-    T nan();
+    static T nan();
     void invalid_input();
     void solve();
     void all_real();
     void no_root();
     void one_real(const T x);
-    void low_high_sort(const T y1, const T y2, T &x1, T &x2);
-    void keep_exponent(const int m, int &m1, int &m2);
-    void veltkamp_split(const T x, T &xhigh, T &xlow);
-    T exactmult(const T x, const T y, const T pxy);
-    T kahan_discriminant(const T a, const T b, const T c);
+    static void low_high_sort(const T y1, const T y2, T &z1, T &z2);
+    static void keep_exponent(const int m, int &m1, int &m2);
+    static void veltkamp_split(const T x, T &xhigh, T &xlow);
+    static T exactmult(const T x, const T y, const T pxy);
+    static T kahan_discriminant(const T a, const T b, const T c);
     void solve_linear();
     void sqrt_minus_c_div_a();
     void solve_axx_plus_c();
@@ -119,17 +119,17 @@ void QuadtraticEquationSolver<T>::one_real(const T x)
 }
 
 template <typename T>
-void QuadtraticEquationSolver<T>::low_high_sort(const T y1, const T y2, T &x1, T &x2)
+void QuadtraticEquationSolver<T>::low_high_sort(const T y1, const T y2, T &z1, T &z2)
 {
     if (y1 < y2)
     {
-        x1 = y1;
-        x2 = y2;
+        z1 = y1;
+        z2 = y2;
     }
     else
     {
-        x1 = y2;
-        x2 = y1;
+        z1 = y2;
+        z2 = y1;
     }
 }
 
@@ -166,7 +166,7 @@ void QuadtraticEquationSolver<T>::veltkamp_split(const T x, T &xhigh, T &xlow)
 template <typename T>
 T QuadtraticEquationSolver<T>::exactmult(const T x, const T y, const T pxy)
 {
-    T xhi, xlo, yhi, ylo;
+    T xhi(0), xlo(0), yhi(0), ylo(0);
     veltkamp_split(x, xhi, xlo);
     veltkamp_split(y, yhi, ylo);
     T t1 = -pxy + xhi * yhi;
