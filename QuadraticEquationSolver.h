@@ -64,7 +64,7 @@ private:
 
 template <typename T>
 QuadtraticEquationSolver<T>::QuadtraticEquationSolver(const T a, const T b, const T c)
-    : a(a), b(b), c(c), state(UNCERTAIN), x1(0), x2(0)
+    : a(a), b(b), c(c), x1(0), x2(0), state(UNCERTAIN)
 {
     static_assert(std::is_same_v<T, double> || std::is_same_v<T, float>, "Only support float or double type");
     static_assert(std::numeric_limits<T>::is_iec559, "Not Support IEC 559 / IEEE 754 standard");
