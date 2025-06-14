@@ -1,4 +1,4 @@
-﻿#include "test/test.h"
+#include "test/test.h"
 
 void test_float()
 {
@@ -10,26 +10,26 @@ void test_float()
 
     demo("a = b = c = 0", 0.f, 0.f, 0.f);
     demo("a = b = 0, c != 0", 0.f, 0.f, 4.f);
-    demo("a = b = 0 != c ≈ 0", 0.f, 0.f, p);
+    demo("a = b = 0 != c ~= 0", 0.f, 0.f, p);
     demo("a = b = 0, c >> 0", 0.f, 0.f, q);
     demo("b != 0", 0.f, 2.f, 0.f);
-    demo("b ≈ 0", 0.f, p, 0.f);
+    demo("b ~= 0", 0.f, p, 0.f);
     demo("b >> 0", 0.f, q, 0.f);
 
     demo("bx + c = 0", 0.f, 2.f, 8.f);
     demo("bx + c = 0, |x| >> 0", 0.f, 2e-37f, 8.f);
     demo("bx + c = 0, |x| >> 0", 0.f, 2.f, 8e37f);
-    demo("bx + c = 0, x ≈ 0", 0.f, 2e30f, 8e-7f);
-    demo("bx + c = 0, x ≈ 0", 0.f, 2.f, 8e-37f);
+    demo("bx + c = 0, x ~= 0", 0.f, 2e30f, 8e-7f);
+    demo("bx + c = 0, x ~= 0", 0.f, 2.f, 8e-37f);
     demo("bx + c = 0, overflow", 0.f, p, q);
     demo("bx + c = 0, underflow", 0.f, q, p);
 
     demo("ax^2 = 0", 5.f, 0.f, 0.f);
     demo("ax^2 + c = 0, Δ < 0", 5.f, 0.f, 7.f);
-    demo("ax^2 + c = 0, Δ < 0, |a| ≈ 0, |c| ≈ 0", p, 0.f, p);
+    demo("ax^2 + c = 0, Δ < 0, |a| ~= 0, |c| ~= 0", p, 0.f, p);
     demo("ax^2 + c = 0, Δ < 0, |a| >> 0, |c| >> 0", q, 0.f, q);
-    demo("ax^2 + c = 0, Δ < 0, |a| >> 0, |c| ≈ 0", q, 0.f, p);
-    demo("ax^2 + c = 0, Δ < 0, |a| ≈ 0, |c| >> 0", p, 0.f, q);
+    demo("ax^2 + c = 0, Δ < 0, |a| >> 0, |c| ~= 0", q, 0.f, p);
+    demo("ax^2 + c = 0, Δ < 0, |a| ~= 0, |c| >> 0", p, 0.f, q);
 
     demo("ax^2 + c = 0, Δ > 0", 1.f, 0.f, -9.f);
     demo("ax^2 + c = 0, Δ > 0, avoid overflow", 1e37f, 0.f, -9e37f);

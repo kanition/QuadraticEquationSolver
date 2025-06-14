@@ -1,4 +1,4 @@
-﻿#include "test/test.h"
+#include "test/test.h"
 
 void test_double()
 {
@@ -10,26 +10,26 @@ void test_double()
 
     demo("a = b = c = 0", 0., 0., 0.);
     demo("a = b = 0, c != 0", 0., 0., 4.);
-    demo("a = b = 0, c ≈ 0", 0., 0., p);
+    demo("a = b = 0, c ~= 0", 0., 0., p);
     demo("a = b = 0, |c| >> 0", 0., 0., q);
     demo("b != 0", 0., 2., 0.);
-    demo("|b| ≈ 0", 0., p, 0.);
+    demo("|b| ~= 0", 0., p, 0.);
     demo("|b| >> 0", 0., q, 0.);
 
     demo("bx + c = 0", 0., 2., 8.);
     demo("bx + c = 0, |x| >> 0", 0., 2e-307, 8.);
     demo("bx + c = 0, |x| >> 0", 0., 2., 8e307);
-    demo("bx + c = 0, x ≈ 0", 0., 2e307, 8e-2);
-    demo("bx + c = 0, x ≈ 0", 0., 2., 8e-309);
+    demo("bx + c = 0, x ~= 0", 0., 2e307, 8e-2);
+    demo("bx + c = 0, x ~= 0", 0., 2., 8e-309);
     demo("bx + c = 0, overflow", 0., p, q);
     demo("bx + c = 0, underflow", 0., q, p);
 
     demo("ax^2 = 0", 5., 0., 0.);
     demo("ax^2 + c = 0, Δ < 0", 5., 0., 7.);
-    demo("ax^2 + c = 0, Δ < 0, |a| ≈ 0, |c| ≈ 0", p, 0., p);
+    demo("ax^2 + c = 0, Δ < 0, |a| ~= 0, |c| ~= 0", p, 0., p);
     demo("ax^2 + c = 0, Δ < 0, |a| >> 0, |c| >> 0", q, 0., q);
-    demo("ax^2 + c = 0, Δ < 0, |a| >> 0, |c| ≈ 0", q, 0., p);
-    demo("ax^2 + c = 0, Δ < 0, |a| ≈ 0, |c| >> 0", p, 0., q);
+    demo("ax^2 + c = 0, Δ < 0, |a| >> 0, |c| ~= 0", q, 0., p);
+    demo("ax^2 + c = 0, Δ < 0, |a| ~= 0, |c| >> 0", p, 0., q);
 
     demo("ax^2 + c = 0, Δ > 0", 1., 0., -9.);
     demo("ax^2 + c = 0, Δ > 0, avoid overflow", 1e307, 0., -9e307);

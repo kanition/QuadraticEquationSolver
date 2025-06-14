@@ -1,4 +1,4 @@
-﻿cmake_minimum_required(VERSION 3.12)
+cmake_minimum_required(VERSION 3.12)
 project("QuadraticEquationSolver")
 
 # hot reload for MSVC
@@ -19,3 +19,8 @@ add_test(NAME double_test COMMAND double_test)
 
 add_executable(float_test "test/float_test.cpp")
 add_test(NAME float_test COMMAND float_test)
+
+if(MSVC)
+  target_compile_options(double_test PRIVATE /source-charset:utf-8)
+  target_compile_options(float_test PRIVATE /source-charset:utf-8)
+endif()

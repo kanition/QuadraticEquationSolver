@@ -1,4 +1,4 @@
-﻿#include <iostream>
+#include <iostream>
 #include "QuadraticEquationSolver.h"
 
 int main()

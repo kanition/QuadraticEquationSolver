@@ -1,4 +1,4 @@
-﻿#pragma once
+#pragma once
 
 #ifndef _QUADRATIC_EQUATION_SOLVER_
 #define _QUADRATIC_EQUATION_SOLVER_
