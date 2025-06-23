@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 
 #ifndef _QUADRATIC_EQUATION_SOLVER_
 #define _QUADRATIC_EQUATION_SOLVER_
@@ -39,17 +39,17 @@ private:
     T x1;
     T x2;
     SolverState state;
-    static T nan();
+    static constexpr T nan();
     void invalid_input();
     void solve();
     void all_real();
     void no_root();
     void one_real(const T x);
-    static void low_high_sort(const T y1, const T y2, T &z1, T &z2);
-    static void keep_exponent(const int m, int &m1, int &m2);
-    static void veltkamp_split(const T x, T &xhigh, T &xlow);
-    static T exactmult(const T x, const T y, const T pxy);
-    static T kahan_discriminant(const T a, const T b, const T c);
+    static const void low_high_sort(const T y1, const T y2, T &z1, T &z2);
+    static const void keep_exponent(const int m, int &m1, int &m2);
+    static const void veltkamp_split(const T x, T &xhigh, T &xlow);
+    static const T exactmult(const T x, const T y, const T pxy);
+    static const T kahan_discriminant(const T a, const T b, const T c);
     void solve_linear();
     void sqrt_minus_c_div_a();
     void solve_axx_plus_c();
@@ -76,7 +76,7 @@ QuadtraticEquationSolver<T>::~QuadtraticEquationSolver()
 }
 
 template <typename T>
-T QuadtraticEquationSolver<T>::nan()
+constexpr T QuadtraticEquationSolver<T>::nan()
 {
     if (std::is_same_v<T, double>)
     {
@@ -119,7 +119,7 @@ void QuadtraticEquationSolver<T>::one_real(const T x)
 }
 
 template <typename T>
-void QuadtraticEquationSolver<T>::low_high_sort(const T y1, const T y2, T &z1, T &z2)
+const void QuadtraticEquationSolver<T>::low_high_sort(const T y1, const T y2, T &z1, T &z2)
 {
     if (y1 < y2)
     {
@@ -134,7 +134,7 @@ void QuadtraticEquationSolver<T>::low_high_sort(const T y1, const T y2, T &z1, T
 }
 
 template <typename T>
-void QuadtraticEquationSolver<T>::keep_exponent(const int m, int &m1, int &m2)
+const void QuadtraticEquationSolver<T>::keep_exponent(const int m, int &m1, int &m2)
 {
     if (m_min <= m && m <= m_max)
     {
@@ -153,7 +153,7 @@ void QuadtraticEquationSolver<T>::keep_exponent(const int m, int &m1, int &m2)
 }
 
 template <typename T>
-void QuadtraticEquationSolver<T>::veltkamp_split(const T x, T &xhigh, T &xlow)
+const void QuadtraticEquationSolver<T>::veltkamp_split(const T x, T &xhigh, T &xlow)
 {
     // split x = xhigh + xlow, and xhigh only uses high fraction bit, xlow only uses low fraction bits
     constexpr int coff = (1 << ((n_bit_f >> 1) + 1)) + 1;
@@ -164,7 +164,7 @@ void QuadtraticEquationSolver<T>::veltkamp_split(const T x, T &xhigh, T &xlow)
 }
 
 template <typename T>
-T QuadtraticEquationSolver<T>::exactmult(const T x, const T y, const T pxy)
+const T QuadtraticEquationSolver<T>::exactmult(const T x, const T y, const T pxy)
 {
     T xhi(0), xlo(0), yhi(0), ylo(0);
     veltkamp_split(x, xhi, xlo);
@@ -177,7 +177,7 @@ T QuadtraticEquationSolver<T>::exactmult(const T x, const T y, const T pxy)
 }
 
 template <typename T>
-T QuadtraticEquationSolver<T>::kahan_discriminant(const T a, const T b, const T c)
+const T QuadtraticEquationSolver<T>::kahan_discriminant(const T a, const T b, const T c)
 {
     constexpr T th = 3;
     constexpr T four = 4;
