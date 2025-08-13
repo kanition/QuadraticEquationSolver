@@ -4,7 +4,6 @@
 ![C++](https://img.shields.io/badge/C++-Solutions-blue.svg?logo=c%2B%2B)
 [![GitHub License](https://img.shields.io/github/license/kanition/QuadraticEquationSolver)](LICENSE)
 ![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/kanition/QuadraticEquationSolver/.github%2Fworkflows%2Fcmake-multi-platform.yml)
-[![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-2.1-5E0D73.svg?logo=contributorcovenant&logoColor=fff)](CODE_OF_CONDUCT.md)
 
 A *Robust High-Precision* [Quadratic Equation](https://en.wikipedia.org/wiki/Quadratic_equation) Solver in C++20 for
 ```math
